@@ -18,6 +18,8 @@ public class MicroOrganizationServiceApplication {
 	/**
 	 * Debería agregarse de forma automática
 	 * 
+	 * NO! REVISAR STREAM BRIDGE!!
+	 * 
 	 * @return
 	 */
 	@Bean
