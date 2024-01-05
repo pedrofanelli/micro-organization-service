@@ -1,16 +1,24 @@
 package com.example.demo;
 
+
+import java.util.UUID;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @RefreshScope
 public class MicroOrganizationServiceApplication {
 
+	@Autowired
+	StreamBridge streamBridge;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(MicroOrganizationServiceApplication.class, args);
 	}
@@ -22,6 +30,7 @@ public class MicroOrganizationServiceApplication {
 	 * 
 	 * @return
 	 */
+	/*
 	@Bean
     public Supplier<String> output(){
         return () -> {
@@ -32,5 +41,25 @@ public class MicroOrganizationServiceApplication {
         };
         
     }
+    */
+
+	/*
+	//Test supplier
+	@Bean
+	public Supplier<String> supplier() {
+		return () -> "random UUID: " + UUID.randomUUID();
+	}
+
+	@Bean
+	public Consumer<String> receive() {
+		return uuid -> {
+			//This binding is targeted for Kafka cluster 1.
+			streamBridge.send("foo-out-0", uuid);
+			//This binding is targeted for Kafka cluster 2.
+			//streamBridge.send("bar-out-0", uuid);
+		};
+	}
+	*/
+	
 
 }
