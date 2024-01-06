@@ -3,6 +3,7 @@ package com.example.demo;
 
 import java.util.UUID;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,13 @@ public class MicroOrganizationServiceApplication {
 		};
 	}
 	*/
+	
+	@Bean
+	public Function<String,String> processorBinding() {
+		
+		return s -> s + " :: " + System.currentTimeMillis();
+		
+	}
 	
 
 }
