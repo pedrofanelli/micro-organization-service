@@ -23,16 +23,16 @@ public class OrganizationController {
 	@Autowired
     private OrganizationService service;
 
-	/*
+	
 	@Autowired
 	private StreamBridge streamBridge;
-	*/
+	
 
     @RequestMapping(value="/{organizationId}",method = RequestMethod.GET)
     public ResponseEntity<Organization> getOrganization( 
     		@PathVariable("organizationId") String organizationId) {
-    	//System.out.println("Sending " + organizationId);
-		//streamBridge.send("output", organizationId);
+    	System.out.println("Sending " + organizationId);
+		streamBridge.send("consumer-topic", organizationId);
         return ResponseEntity.ok(service.findById(organizationId));
     }
 
