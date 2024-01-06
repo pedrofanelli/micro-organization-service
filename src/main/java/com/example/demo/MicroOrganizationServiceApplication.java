@@ -62,12 +62,22 @@ public class MicroOrganizationServiceApplication {
 	}
 	*/
 	
+	
+	/*
 	@Bean
 	public Function<String,String> processorBinding() {
 		
 		return s -> s + " :: " + System.currentTimeMillis();
 		
 	}
+	*/
+	
+	@Bean
+	public Consumer<String> consumerBinding() {
+		return s -> System.out.println("Data Consumed :: " + s.toUpperCase());
+	}
+	
+	
 	
 
 }
