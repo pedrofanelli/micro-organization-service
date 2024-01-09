@@ -40,3 +40,7 @@ Sin embargo, supongamos que queremos enviar un evento por una señal externa. Es
 Existe **streamBridge**! Con esta clase que nosotros incorporamos con @Autowired a nuestro REST Endpoint, nosotros indicamos el Topic al que queremos enviar la data, y el propio objeto, y listo! Para ver nuestro caso ir al controlador de este servicio. Lo que hace es, al recibir un pedido get, en el manejo del pedido, se envia el mensaje al topic, el cual será receptado por un Consumer, acá si será como los ejemplos iniciales, que estará escuchando en el mismo topic y lo recibirá.
 
 Copado no? :D
+
+Ya esta armado en el caso de una CREACIÓN de una organización, dentro del servicio que lo hace, luego de lograrlo en la base de datos, se utiliza la clase SimpleSourceBean que se encarga de todo. En esa clase se envía un objeto custom (OrganizationChangeModel) creado por nosotros que será receptado en el microservicio de Licensing Service. En ese otro microservicio también tendremos que tener el modelo en nuestra librería. Además, con el objeto viajan elementos locales como es el CorrelationId, armado en UserContext, durante un filtro ANTES de ingresar al microservicio de organization. 
+
+Queda por ver la situación donde, al realizarse un cambio en una organización, se CATCHEE el dato usando REDIS.
