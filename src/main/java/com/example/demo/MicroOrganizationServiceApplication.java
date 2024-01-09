@@ -27,11 +27,12 @@ public class MicroOrganizationServiceApplication {
 	
 	*/
 	
+	/*
 	@Bean
 	public Consumer<String> consumerBinding() {
 		return s -> System.out.println("Data Consumed :: " + s.toUpperCase());
 	}
-	
+	*/
 	/*
 	
 	@Bean
